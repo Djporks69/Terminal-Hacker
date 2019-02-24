@@ -3,12 +3,12 @@
 public class Hacker : MonoBehaviour
 {
 
-    //Game Configuration Data
+    
     string[] level1passwords = { "candy", "counter", "food", "money", "sales" };
     string[] level2passwords = { "credit-card", "withdraw", "currency", "machine", "deposit" };
     string[] level3passwords = { "customer", "statement", "interest", "machinery", "safety deposit" };
 
-    //game state
+    
     int level;
 
     enum Screen { MainMenu, Password, Win }
@@ -16,7 +16,7 @@ public class Hacker : MonoBehaviour
     string password;
 
 
-    // Start is called before the first frame update
+    
     void Start()
     {
 
@@ -63,7 +63,7 @@ public class Hacker : MonoBehaviour
         if (isvalidlevelnumber)
         {
             level = int.Parse(input);
-            StartGame();
+            AskForPassword();
         }
 
 
@@ -78,13 +78,19 @@ public class Hacker : MonoBehaviour
         }
     }
 
-    void StartGame()
+    void AskForPassword()
     {
-        print(level1passwords.Length);
-        print(level2passwords.Length);
-        print(level3passwords.Length);
         currentScreen = Screen.Password;
         Terminal.ClearScreen();
+        SetRandomPassword();
+        Terminal.WriteLine("You have chosen level " + level);
+        Terminal.WriteLine("Enter your password. Hint: " + password.Anagram());
+        Terminal.WriteLine("\n \n \n \n \n \n \n \n Type 'menu' to select another level.");
+    
+    }
+
+    void SetRandomPassword()
+    {
         switch (level)
         {
             case 1:
@@ -104,8 +110,6 @@ public class Hacker : MonoBehaviour
                 break;
 
         }
-        Terminal.WriteLine("You have chosen level " + level);
-        Terminal.WriteLine("Please enter your password:");
     }
 
     void CheckPassword(string input)
@@ -116,7 +120,7 @@ public class Hacker : MonoBehaviour
         }
         else
         {
-            Terminal.WriteLine("Incorrect Password");
+            AskForPassword();
         }
     }
 
