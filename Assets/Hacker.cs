@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class Hacker : MonoBehaviour {
+public class Hacker : MonoBehaviour
+{
 
     //Game Configuration Data
     string[] level1passwords = { "candy", "counter", "food", "money", "sales" };
@@ -35,7 +36,7 @@ public class Hacker : MonoBehaviour {
 
 
     }
-   
+
 
     void OnUserInput(string input)
     {
@@ -64,9 +65,9 @@ public class Hacker : MonoBehaviour {
             level = int.Parse(input);
             StartGame();
         }
-            
 
-    
+
+
         else if (input == "Joel")
         {
             Terminal.WriteLine("Joel is the epicest gamer that ever\n gamed.");
@@ -98,10 +99,10 @@ public class Hacker : MonoBehaviour {
                 int randomlevel3 = Random.Range(0, level3passwords.Length);
                 password = level3passwords[randomlevel3];
                 break;
-           default:
+            default:
                 Debug.LogError("Level Number Invalid");
                 break;
-          
+
         }
         Terminal.WriteLine("You have chosen level " + level);
         Terminal.WriteLine("Please enter your password:");
@@ -111,11 +112,69 @@ public class Hacker : MonoBehaviour {
     {
         if (input == password)
         {
-            Terminal.WriteLine("Correct Password, Access Granted.");
+            DisplayWinScreen();
         }
         else
         {
             Terminal.WriteLine("Incorrect Password");
         }
-}
+    }
+
+    void DisplayWinScreen()
+    {
+        currentScreen = Screen.Win;
+        Terminal.ClearScreen();
+        ShowLevelReward();
+
+    }
+
+    void ShowLevelReward()
+    {
+        switch (level)
+        {
+            case 1:
+                Terminal.WriteLine(@"
+
+
+
+                 __                 
+ /\  _ _ _ _ _  / _  _ _  _ |_ _ _| 
+/--\(_(_(-_)_)  \__)| (_|| )|_(-(_| 
+                                    
+............
+
+Wiring Money from customer accounts....
+Transaction complete. Type 'menu' to   return to the Main Menu.");
+                break;
+            case 2:
+                Terminal.WriteLine(@"
+                 __                 
+ /\  _ _ _ _ _  / _  _ _  _ |_ _ _| 
+/--\(_(_(-_)_)  \__)| (_|| )|_(-(_| 
+                                    
+............
+
+Replicating Card information.......
+Replication complete. Type 'menu' to return to the Main Menu.");
+                break;
+            case 3:
+                Terminal.WriteLine(@"
+                 __                 
+ /\  _ _ _ _ _  / _  _ _  _ |_ _ _| 
+/--\(_(_(-_)_)  \__)| (_|| )|_(-(_| 
+                                    
+...........
+Transferring Money from Online Banking services.....
+Transaction complete. Type 'menu' to return to the Main Menu.");
+                break;
+
+            
+                
+
+
+
+
+
+        }
+    }
 }
