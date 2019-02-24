@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Experimental.UIElements;
+﻿using UnityEngine;
 
 public class Hacker : MonoBehaviour {
 
@@ -25,6 +21,7 @@ public class Hacker : MonoBehaviour {
 
         ShowMainMenu();
     }
+
 
     void ShowMainMenu()
     {
@@ -82,20 +79,26 @@ public class Hacker : MonoBehaviour {
 
     void StartGame()
     {
+        print(level1passwords.Length);
+        print(level2passwords.Length);
+        print(level3passwords.Length);
         currentScreen = Screen.Password;
         Terminal.ClearScreen();
         switch (level)
         {
             case 1:
-                password = level1passwords[0];
+                int randomlevel1 = Random.Range(0, level1passwords.Length);
+                password = level1passwords[randomlevel1];
                 break;
             case 2:
-                password = level2passwords[0];
+                int randomlevel2 = Random.Range(0, level2passwords.Length);
+                password = level2passwords[randomlevel2];
                 break;
             case 3:
-                password = level3passwords[0];
+                int randomlevel3 = Random.Range(0, level3passwords.Length);
+                password = level3passwords[randomlevel3];
                 break;
-            default:
+           default:
                 Debug.LogError("Level Number Invalid");
                 break;
           
