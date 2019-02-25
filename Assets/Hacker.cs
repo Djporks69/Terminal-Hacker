@@ -3,10 +3,10 @@
 public class Hacker : MonoBehaviour
 {
 
-    
-    string[] level1passwords = { "candy", "counter", "food", "money", "sales" };
-    string[] level2passwords = { "credit-card", "withdraw", "currency", "machine", "deposit" };
-    string[] level3passwords = { "customer", "statement", "interest", "machinery", "safety deposit" };
+
+    string[] level1passwords = { "candy", "counter", "food", "money", "sales", "buy", "book", "pizza", "clothes" };
+    string[] level2passwords = { "credit-card", "withdraw", "currency", "machine", "deposit", "machine", "Teller", "cash" };
+    string[] level3passwords = { "customer", "statement", "interest", "machinery", "safety deposit", "account", "insurance", "investment" };
 
     
     int level;
@@ -176,13 +176,6 @@ Transferring Money from Online Banking services.....
 Transaction complete. Type 'menu' to return to the Main Menu.");
                 break;
 
-            
-                
-
-
-
-
-
-        }
+            }
     }
 }
